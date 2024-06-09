@@ -117,7 +117,7 @@ const AdminDashboard = () => {
     dispatch(getMonthlyRevenue());
     dispatch(getTotalDeposit());
     dispatch(getTotalWithdraw());
-  }, []);
+  }, [revenue, monRevenue, dailyRevenue]);
   return (
     <>
       <MetaData title={"Admin Dashboard"} />
