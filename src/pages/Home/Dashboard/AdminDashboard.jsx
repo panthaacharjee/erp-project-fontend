@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import MetaData from "../../../components/MetaData";
 import { useDispatch, useSelector } from "react-redux";
 import Imag from "../../../assets/Avatar/Profile.png";
 import { Link } from "react-router-dom";
 import LineChart from "../../../components/LineChart";
-import { AiOutlinePlus } from "react-icons/ai";
 import {
   getMonthlyRevenue,
   getRevenue,
@@ -21,7 +20,6 @@ const AdminDashboard = () => {
   const { topcustomer, unpaidcustomer } = useSelector(
     (state) => state.customer
   );
-  console.log(topcustomer);
 
   const { projects } = useSelector((state) => state.projects);
   const {
@@ -33,18 +31,6 @@ const AdminDashboard = () => {
     mdWithdraw,
   } = useSelector((state) => state.totalPayment);
 
-  //Year Filter
-  const date = new Date();
-  // const [year, setYear] = useState(date.getFullYear());
-
-  const previous = () => {
-    // setYear(year - 1);
-    // dispatch(getRevenue(year - 1));
-  };
-  const next = () => {
-    // setYear(year + 1);
-    // dispatch(getRevenue(year + 1));
-  };
 
   const data1 = [
     {
@@ -176,7 +162,7 @@ const AdminDashboard = () => {
             </div>
           </div>
           <div className="w-full  lg:w-4/12 pl-0 lg:pl-4 mt-12 lg:mt-0 pb-4 ">
-            <div className=" bg-blue1  shadow-box1 rounded-xl lg:h-64  relative">
+            <div className=" bg-blue1  shadow-box1 rounded-xl lg:h-64 pb-8   relative">
               <div className=" absolute top-minus w-full  ">
                 <div className=" bg-black w-8/12 sm:w-6/12 md:w-4/12 lg:w-7/12 mx-auto py-2 rounded-md">
                   <div className="text-white  font-medium font-rubik flex items-center justify-center">
@@ -277,6 +263,7 @@ const AdminDashboard = () => {
                       <div
                         className=" bg-white px-8 pb-5 pt-16 rounded-xl relative mt-12"
                         style={{ boxShadow: "0px 0px 5px 0px #000" }}
+                        key={ind}
                       >
                         <div className="absolute top-minus1 w-50 bg-blue1 px-5 py-3 rounded-lg">
                           <p className="text-white font-bold">{val.name}</p>

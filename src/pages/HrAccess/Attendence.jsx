@@ -8,11 +8,9 @@ import AttendenceTable from "./Extra/AttendenceTable";
 const Attendence = () => {
   const dispatch = useDispatch();
   const { allAttendence } = useSelector((state) => state.attendence);
-  console.log(allAttendence);
   const date = new Date(Date.now());
   const result =
     allAttendence && allAttendence.filter((val) => val.time === date);
-  console.log(result);
   useEffect(() => {
     dispatch(getAttendence());
   }, []);

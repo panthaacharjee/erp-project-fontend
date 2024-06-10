@@ -38,7 +38,6 @@ const AddProject = () => {
       managerId: managerId,
       clientId: clientId,
     };
-    console.log(userData);
     dispatch(createProject(userData));
   };
   useEffect(() => {

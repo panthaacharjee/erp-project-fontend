@@ -44,6 +44,7 @@ import UpdateProfileAdmin from "./pages/AdminAccess/UpdateProfileAdmin";
 import UpdateAvatarAdmin from "./pages/AdminAccess/UpdateAvatarAdmin";
 import Attendence from "./pages/HrAccess/Attendence";
 import CreateAttendence from "./pages/HrAccess/CreateAttendence";
+import Footer from "./components/Footer";
 TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(ru);
 
@@ -60,7 +61,6 @@ function App() {
   useEffect(() => {
     dispatch(loadUser());
     // dispatch(getRevenue(year));
-   
   },[]);
   return (
     <div>
@@ -354,6 +354,7 @@ function App() {
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer/>
     </div>
   );
 }

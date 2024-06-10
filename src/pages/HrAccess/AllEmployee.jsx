@@ -14,7 +14,6 @@ const AllEmployee = () => {
     e.preventDefault();
     dispatch(getEmployee(keyword));
   };
-  console.log(employee);
   useEffect(() => {
     dispatch(getEmployee(keyword));
   }, [keyword]);

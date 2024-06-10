@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MetaData from "../../../components/MetaData";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
@@ -27,7 +27,7 @@ import FullLoading from "../../../components/FullLoading";
 
 const ManagerDashboard = () => {
   const dispatch = useDispatch();
-  const { user, loading } = useSelector((state) => state.user);
+  const { user,  } = useSelector((state) => state.user);
   const { project, ploading, success, error } = useSelector(
     (state) => state.project
   );
@@ -204,7 +204,6 @@ const ManagerDashboard = () => {
   const deleteExpensesFunc = (id) => {
     dispatch(deleteExpenses(id));
   };
-  console.log(parseFloat(unit));
 
   //Show Add LabourExpenses
   const [addLabourExpenses, setAddLabourExpenses] = useState(false);

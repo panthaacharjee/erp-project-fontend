@@ -18,7 +18,8 @@ const Home = () => {
     dispatch(getAllProject());
     dispatch(getTopCustomer());
     dispatch(getUnpaidCustomer());
-  },)
+    
+  },[])
   if (user.role === "Admin") {
     return <AdminDashboard />;
   } else if (user.role === "Hr") {

@@ -38,9 +38,9 @@ const UpdateProfileAdmin = () => {
     }
   }, [success, error]);
   return (
-    <div className="flex justify-center items-center pt-20 mb-5">
+    <div className="flex justify-center items-center pt-20 mb-5 h-screen">
       <MetaData title={"Update Profile"} />
-      <form onSubmit={handleSubmit} className=" bg-white shadow-btn rounded-xl">
+      <form onSubmit={handleSubmit} className=" bg-white shadow-btn rounded-xl  w-10/12 lg:w-4/12">
         <p className="mt-5 text-center text-lg font-poppins font-medium">
           Update Profile
         </p>
@@ -73,7 +73,7 @@ const UpdateProfileAdmin = () => {
           <div>
             <label>User Name (Not Editable)</label>
 
-            <p className="w-full px-2 py-2 border-black border-2 rounded-lg border-solid">
+            <p className="w-full px-2 py-2 border-black bg-black text-white border-2 rounded-lg border-solid">
               {user && user.userName}
             </p>
           </div>

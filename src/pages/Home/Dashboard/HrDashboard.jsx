@@ -21,7 +21,6 @@ const HrDashboard = () => {
   const { topcustomer, unpaidcustomer } = useSelector(
     (state) => state.customer
   );
-  console.log(topcustomer);
 
   const { projects } = useSelector((state) => state.projects);
   const {
@@ -117,7 +116,7 @@ const HrDashboard = () => {
     dispatch(getMonthlyRevenue());
     dispatch(getTotalDeposit());
     dispatch(getTotalWithdraw());
-  }, [monRevenue]);
+  },[]);
   return (
     <>
       <MetaData title={"Hr Dashboard"} />

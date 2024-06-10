@@ -1,5 +1,7 @@
 import axios from "axios";
-const url = "https://erp-project-backend-jqan.onrender.com"
+// const url = "https://erp-project-backend-jqan.onrender.com"
+const url = "http://localhost:8000"
+
 const token = localStorage.getItem("token")
 
 export const meterialPdf = (userData, id) => async (dispatch) => {

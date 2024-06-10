@@ -70,7 +70,6 @@ const ClientDashboard = () => {
       }, 1000);
     }
   };
-  console.log(project);
 
   //To Local String
   function numberWithCommas(x) {

@@ -15,6 +15,9 @@ export default {
         blue3: "#07A2F9",
         box: "rgba(0, 0, 0, 0.25)",
         box1: "rgba(1, 0, 0, 0.75)",
+        yellow1:"#f4b41a",
+        blueC : "#143d59",
+        ash:"#ffa781"
       },
       boxShadow: {
         input: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
@@ -28,5 +31,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ]
 };

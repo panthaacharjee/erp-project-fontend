@@ -14,7 +14,6 @@ const AllClient = () => {
     e.preventDefault();
     dispatch(getClient(keyword));
   };
-  console.log(keyword);
   useEffect(() => {
     dispatch(getClient(keyword));
   }, []);

@@ -39,8 +39,6 @@ const UpdateClient = () => {
       work: work,
       bankAccount: bankAccount,
     };
-    //     console.log(userData);
-
     dispatch(updateClient(id, userData));
   };
   useEffect(() => {

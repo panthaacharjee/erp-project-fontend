@@ -11,7 +11,6 @@ const Notification = () => {
   const dispatch = useDispatch();
   const { adminNotification, managerNotification, clientNotification } =
     useSelector((state) => state.notification);
-  console.log(adminNotification, managerNotification, clientNotification);
 
   //Get Month
   const getMonth = (date) => {
