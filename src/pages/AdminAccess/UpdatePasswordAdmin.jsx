@@ -48,7 +48,7 @@ const UpdatePasswordAdmin = () => {
   return (
     <div className="flex justify-center items-center pt-20 mb-5 h-screen">
       <MetaData title={"Update Password"} />
-      <form onSubmit={handleSubmit} className=" bg-white shadow-btn rounded-xl">
+      <form onSubmit={handleSubmit} className=" bg-white shadow-btn rounded-xl w-11/12 lg:w-4/12">
         <p className="mt-5 text-center text-lg font-poppins font-medium">
           Update Password
         </p>
