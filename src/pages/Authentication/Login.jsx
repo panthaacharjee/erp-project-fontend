@@ -82,7 +82,7 @@ const Login = ({ role, roleType, setRoleType, setRole }) => {
           src={LoginSvg}
           alt="Svg Image"
           className="absolute bottom-6 left-1"
-          style={{ zIndex: "" }}
+          style={{ zIndex: "-22222" }}
         />
         <div className="w-9/12 sm:w-5/12 md:w-5/12 lg:w-3/12 xl:6/12 z-9">
           <img src={Logo} alt="Logo" className="m-auto" />
