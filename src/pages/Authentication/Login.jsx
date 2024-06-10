@@ -77,12 +77,12 @@ const Login = ({ role, roleType, setRoleType, setRole }) => {
   return (
     <>
       <MetaData title={"Login"} />
-      <div className="flex justify-center items-center w-full h-screen">
+      <div className="flex justify-center items-center w-full h-screen ">
         <img
           src={LoginSvg}
           alt="Svg Image"
           className="absolute bottom-6 left-1"
-          style={{ zIndex: "-22222" }}
+          style={{ zIndex: "" }}
         />
         <div className="w-9/12 sm:w-5/12 md:w-5/12 lg:w-3/12 xl:6/12 z-9">
           <img src={Logo} alt="Logo" className="m-auto" />
