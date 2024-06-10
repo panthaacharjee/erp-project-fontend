@@ -39,12 +39,12 @@ const PaymentHistory = () => {
             Withraw & Deposit Summary
           </p>
           <div className="flex justify-between text-white text-lg font-medium mt-5">
-            <p className="text-xs lg:text-md">Total Deposit</p>
-            <p className="text-xs lg:text-md">{numberWithCommas(totalDepsoit)}</p>
+            <p className="">Total Deposit</p>
+            <p className="">{numberWithCommas(totalDepsoit)}</p>
           </div>
           <div className="flex justify-between text-white text-lg font-medium mt-2">
-            <p className="text-xs lg:text-md">Total Withdraw</p>
-            <p className="text-xs lg:text-md">{numberWithCommas(totalWithdraw)}</p>
+            <p className="">Total Withdraw</p>
+            <p className="">{numberWithCommas(totalWithdraw)}</p>
           </div>
         </div>
       </div>
