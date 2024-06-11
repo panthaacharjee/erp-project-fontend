@@ -45,7 +45,7 @@ const CreateAttendence = () => {
   }, []);
   return (
     <div className="px-3 sm:px-12 md:px-12 py-20">
-      <div className="bg-sky-400 flex justify-between items-center px-5 py-2 rounded-md">
+      <div className="bg-slate-950 flex justify-between items-center px-5 py-2 rounded-md">
         <p className="font-semibold text-white">Attendence Create</p>
         <input
           type="date"
@@ -53,16 +53,13 @@ const CreateAttendence = () => {
           onChange={(e) => setDate(e.target.value)}
         />
       </div>
-      <table className="w-full mt-5 bg-slate-400 text-center border-l-2 border-r-2 border-cyan-950 border-b-2">
-        <tr className=" bg-blue-300 ">
+      <table className="w-full mt-5 bg-slate-400 text-black text-center border-l-2 border-r-2 border-cyan-950 border-b-2">
+        <tr className=" bg-slate-300 text-black ">
           <td className="py-2 border-2 font-medium border-cyan-900">
             Serial No
           </td>
           <td className="py-2 border-2 font-medium border-cyan-900">
             Employee Name
-          </td>
-          <td className="py-2 border-2 font-medium border-cyan-900">
-            Employee ID
           </td>
           <td className="py-2 border-2 font-medium border-cyan-900">Status</td>
           <td className="py-2 border-2 font-medium border-cyan-900">Action</td>

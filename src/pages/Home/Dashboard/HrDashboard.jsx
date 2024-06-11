@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import MetaData from "../../../components/MetaData";
 import { useDispatch, useSelector } from "react-redux";
 import Imag from "../../../assets/Avatar/Profile.png";
 import { Link } from "react-router-dom";
 import LineChart from "../../../components/LineChart";
-import { AiOutlinePlus } from "react-icons/ai";
 import {
+  getAllProject,
   getMonthlyRevenue,
   getRevenue,
+  getTopCustomer,
   getTotalDeposit,
   getTotalWithdraw,
+  getUnpaidCustomer,
 } from "../../../redux/actions/adminAction";
 
 const HrDashboard = () => {
@@ -32,18 +34,6 @@ const HrDashboard = () => {
     mdWithdraw,
   } = useSelector((state) => state.totalPayment);
 
-  //Year Filter
-  const date = new Date();
-  // const [year, setYear] = useState(date.getFullYear());
-
-  const previous = () => {
-    // setYear(year - 1);
-    // dispatch(getRevenue(year - 1));
-  };
-  const next = () => {
-    // setYear(year + 1);
-    // dispatch(getRevenue(year + 1));
-  };
 
   const data1 = [
     {
@@ -116,7 +106,10 @@ const HrDashboard = () => {
     dispatch(getMonthlyRevenue());
     dispatch(getTotalDeposit());
     dispatch(getTotalWithdraw());
-  },[]);
+    dispatch(getAllProject())
+    dispatch(getUnpaidCustomer())
+    dispatch(getTopCustomer())
+  },[monRevenue]);
   return (
     <>
       <MetaData title={"Hr Dashboard"} />
@@ -147,13 +140,13 @@ const HrDashboard = () => {
               <div className="bg-blue1 shadow-box1 h-32 rounded-3xl  mt-5 md:mt-0 md:mr-5  w-full lg:w-1/2  px-5 py-5">
                 <p className="text-xl font-poppins text-white">Revenue</p>
                 <p className="text-3xl mt-2 font-medium">
-                  {revenue && numberWithCommas(revenue)}
+                  {revenue ? numberWithCommas(revenue):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
                 </p>
               </div>
               <div className="bg-blue1 shadow-box1 h-32 rounded-3xl mt-5 md:mt-0  w-full lg:w-1/2 px-5 py-5">
                 <p className="text-xl font-poppins text-white">Total Deposit</p>
                 <p className="text-3xl mt-2 font-medium">
-                  {totalDeposit && numberWithCommas(totalDeposit)}
+                  {totalDeposit ? numberWithCommas(totalDeposit):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
                 </p>
               </div>
             </div>
@@ -163,13 +156,13 @@ const HrDashboard = () => {
                   Total Withdraw
                 </p>
                 <p className="text-3xl mt-2 font-medium">
-                  {totalWithdraw && numberWithCommas(totalWithdraw)}
+                  {totalWithdraw ? numberWithCommas(totalWithdraw):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
                 </p>
               </div>
               <div className=" bg-blue1 shadow-box1 h-32 rounded-3xl  mt-5 md:mt-0  w-full lg:w-1/2  px-5 py-5">
                 <p className="text-xl font-poppins text-white">Daily Revenue</p>
                 <p className="text-3xl mt-2 font-medium">
-                  {dailyRevenue && numberWithCommas(dailyRevenue)}
+                  {dailyRevenue ? numberWithCommas(dailyRevenue):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
                 </p>
               </div>
             </div>
@@ -191,13 +184,13 @@ const HrDashboard = () => {
                   <div className="flex justify-between items-center">
                     <p className=" text-white">Chairman </p>
                     <p className="text-white">
-                      {chairmanDeposit && numberWithCommas(chairmanDeposit)}
+                      {chairmanDeposit ? numberWithCommas(chairmanDeposit):<span>0</span>}
                     </p>
                   </div>
                   <div className="flex justify-between items-center">
                     <p className=" text-white">MD</p>
                     <p className="text-white">
-                      {mdDeposit && numberWithCommas(mdDeposit)}
+                      {mdDeposit ?numberWithCommas(mdDeposit):<span>0</span>}
                     </p>
                   </div>
                 </div>
@@ -208,13 +201,13 @@ const HrDashboard = () => {
                   <div className="flex justify-between items-center">
                     <p className=" text-white">Chairman </p>
                     <p className="text-white">
-                      {chairmanWithdraw && numberWithCommas(chairmanWithdraw)}
+                      {chairmanWithdraw ? numberWithCommas(chairmanWithdraw):<span>0</span>}
                     </p>
                   </div>
                   <div className="flex justify-between items-center">
                     <p className=" text-white">MD</p>
                     <p className="text-white">
-                      {mdWithdraw && numberWithCommas(mdWithdraw)}
+                      {mdWithdraw ? numberWithCommas(mdWithdraw):<span>0</span>}
                     </p>
                   </div>
                 </div>

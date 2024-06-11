@@ -45,9 +45,9 @@ const MeteralGenerator = ({ setShowMExpenses, id }) => {
     // dispatch(getMeterialPdf());
   }, [success]);
   return (
-    <div className="text-white w-5/12 px-5 py-5 bg-blue-500">
-      <div className="flex justify-between">
-        <h2 className="text-xl font-bold mb-2">Meterial Expenses List</h2>
+    <div className="text-white w-11/12 md:w-5/12 px-5 py-5 bg-slate-500">
+      <div className="flex justify-between items-center">
+        <h2 className="text-sm md:text-xl font-bold mb-2">Meterial Expenses List</h2>
         <p
           className="cursor-pointer font-semibold"
           onClick={() => {
@@ -57,11 +57,11 @@ const MeteralGenerator = ({ setShowMExpenses, id }) => {
           Close
         </p>
       </div>
-      <div>
+      <div className="mt-5">
         <p>Select a time period (Selected - Now Date)</p>
         <input
           type="date"
-          className="w-full py-2 text-black rounded-md px-5"
+          className="w-full py-2 text-white rounded-md px-5 mt-3"
           onChange={(e) => {
             setPeriod(e.target.value);
             setTimeError();

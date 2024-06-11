@@ -8,10 +8,9 @@ const AttendenceTable = ({ data, setData, val, ind }) => {
     <tr className="">
       <td className="py-2 border-2 border-cyan-900">{ind + 1}</td>
       <td className="py-2 border-2 border-cyan-900">{val.name}</td>
-      <td className="py-2 border-2 border-cyan-900">{val.id}</td>
       <td className="py-2 border-2 border-cyan-900">
         <select
-          className="px-5 py-2 rounded-lg"
+          className="px-5 py-2 rounded-lg text-white"
           onChange={(e) => setStatus(e.target.value)}
         >
           <option value="Absent">Absent</option>

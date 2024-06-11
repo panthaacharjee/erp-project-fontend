@@ -42,7 +42,7 @@ const SingleClient = () => {
     <>
       <div className="flex justify-center pt-20 mb-5">
         <MetaData title={`${singleClient && singleClient.name}`} />
-        <div className=" bg-white shadow-btn rounded-xl w-10/12 md:w-4/12">
+        <div className=" bg-white shadow-btn rounded-xl w-11/12 md:w-4/12">
           <div className="rounded-md  py-5 px-5">
             <div className="flex justify-center">
               <label className="cursor-pointer">

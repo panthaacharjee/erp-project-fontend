@@ -124,14 +124,14 @@ const SalaryDistribution = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row  mt-10">
+        <div className="flex flex-col md:flex-row flex-wrap  mt-10">
           {employee && employee.length <= 0 ? (
             <p className="mt-5">No Employee Found</p>
           ) : null}
           {employee &&
             employee.map((val, ind) => {
               return (
-                <div key={ind} className="flex  w-full md:w-2/12">
+                <div key={ind} className="flex  w-full md:w-2/12 mt-5 md:mt-2">
                   <div className="w-full mr-2 bg-blue3 rounded-2xl">
                     <div>
                       {val.avatar ? (

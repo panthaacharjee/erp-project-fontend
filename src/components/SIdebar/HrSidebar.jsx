@@ -5,7 +5,7 @@ const HrSidebar = ({ showSidebar }) => {
   return (
     <>
       {showSidebar && (
-        <div className="h-screen bg-box1 w-6/12 sm:w-4/12 overflow-y-auto lg:w-1/6 fixed z-20 py-20 list-none px-3">
+        <div className="h-screen bg-box1 w-7/12 sm:w-4/12 overflow-y-auto lg:w-1/6 fixed z-20 py-20 list-none px-3">
           <li className=" hover:bg-blue-300 cursor-pointer pl-2 rounded-lg text-white hover:text-black hover:font-bold">
             <Link className="block py-3" to="/">
               Home

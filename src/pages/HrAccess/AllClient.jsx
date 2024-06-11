@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getClient } from "../../redux/actions/hrAction";
 import Imag from "../../assets/Avatar/Profile2.png";
@@ -21,11 +21,11 @@ const AllClient = () => {
     <div className="px-3 sm:px-12 md:px-12 pt-14 md:py-20">
       <MetaData title={"All Client"} />
       <div className="mt-5 bg-blue2 rounded-lg px-5 py-2 text-white flex justify-between items-center relative">
-        <h3 className=" text-xl font-poppins font-bold">All Client</h3>
-        <form onSubmit={handleClick} className="w-6/12 md:w-3/12">
+        <h3 className=" text-sm lg:text-xl font-poppins font-bold">All Client</h3>
+        <form onSubmit={handleClick} className="w-8/12 md:w-3/12">
           <input
             type="text"
-            placeholder="search a client"
+            placeholder="client name"
             className="w-full px-3 py-1 rounded-md text-black"
             onChange={(e) => setKeyword(e.target.value)}
           />
@@ -39,7 +39,7 @@ const AllClient = () => {
           Wait................
         </p>
       ) : (
-        <div className="flex  flex-col md:flex-row mt-10">
+        <div className="flex  flex-col md:flex-row  flex-wrap mt-3 lg:mt-8 mb-5">
           {client && client.length <= 0 ? (
             <p className="mt-5">No Client Found</p>
           ) : null}
@@ -49,7 +49,7 @@ const AllClient = () => {
                 <Link
                   to={`/client/${val._id}`}
                   key={ind}
-                  className="flex  w-full md:w-3/12"
+                  className="flex  w-full md:w-3/12 mt-5 mt:mt-3"
                 >
                   <div className="w-full mr-2 bg-blue3 rounded-2xl">
                     <div>

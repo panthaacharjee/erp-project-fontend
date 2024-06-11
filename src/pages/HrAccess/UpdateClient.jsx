@@ -64,7 +64,7 @@ const UpdateClient = () => {
   return (
     <div className="flex justify-center pt-20 mb-5">
       <MetaData title={"Update Client"} />
-      <form onSubmit={handleUpdate} className=" bg-white shadow-btn rounded-xl">
+      <form onSubmit={handleUpdate} className=" bg-white shadow-btn rounded-xl w-11/12 md:w-4/12">
         <p className="mt-5 text-center text-lg font-poppins font-medium">
           Update Client
         </p>

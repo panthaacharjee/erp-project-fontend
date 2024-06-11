@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   assignClient,
   assignManager,
   clearError,
-  clearSuccess,
   getClient,
   getEmployee,
   getSingleProject,
@@ -53,7 +52,11 @@ const SingleProject = () => {
   };
   //To Local String
   function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if(x){
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }else{
+      return 0
+    }
   }
 
   //Costing Math
@@ -104,7 +107,7 @@ const SingleProject = () => {
   let interval = useRef();
   const startTimer = () => {
     if (project) {
-      const countdownDate = new Date(project.deadline).getTime();
+      const countdownDate = new Date(project?.deadline).getTime();
       interval = setInterval(() => {
         const now = new Date(Date.now()).getTime();
         const distance = countdownDate - now;
@@ -121,24 +124,26 @@ const SingleProject = () => {
   };
 
   //Time Converter
-  function secondsToHHMMSS(totalSeconds) {
-    var hours = Math.floor(totalSeconds / 3600);
-    var minutes = Math.floor((totalSeconds - hours * 3600) / 60);
-    var seconds = totalSeconds - hours * 3600 - minutes * 60;
+  // function secondsToHHMMSS(totalSeconds) {
+  //   var hours = Math.floor(totalSeconds / 3600);
+  //   var minutes = Math.floor((totalSeconds - hours * 3600) / 60);
+  //   var seconds = totalSeconds - hours * 3600 - minutes * 60;
 
-    // Padding the values to ensure they are two digits
-    if (hours < 10) {
-      hours = "0" + hours;
-    }
-    if (minutes < 10) {
-      minutes = "0" + minutes;
-    }
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
+  //   // Padding the values to ensure they are two digits
+  //   if (hours < 10) {
+  //     hours = "0" + hours;
+  //   }
+  //   if (minutes < 10) {
+  //     minutes = "0" + minutes;
+  //   }
+  //   if (seconds < 10) {
+  //     seconds = "0" + seconds;
+  //   }
 
-    return hours + ":" + minutes + ":" + seconds;
-  }
+  //   return hours + ":" + minutes + ":" + seconds;
+  // }
+
+
   //Date Converter
   function dateConverter(x) {
     let createdAt = new Date(x);
@@ -286,7 +291,7 @@ const SingleProject = () => {
     dispatch(getSingleProject(id));
     dispatch(getClient(""));
     dispatch(getEmployee(""));
-  }, []);
+  }, [days]);
   return (
     <>
       <div className="px-3 sm:px-12 md:px-12 pt-14 md:py-20">
@@ -350,12 +355,12 @@ const SingleProject = () => {
                 )}
               </p>
             </div>
-            <p className="font-poppins mt-5">
+            <p className="font-poppins mt-5 mb-3">
               {project && project.description}
             </p>
           </div>
           <div className="w-full md:w-3/12 flex justify-center md:justify-end ">
-            <div className="bg-blue3 w-11/12 px-5 py-5 rounded-lg text-center leading-8 mt-6 lg:mt-0 max-h-44">
+            <div className="bg-red-500 text-white w-full px-5 py-5 rounded-lg text-center leading-8 mt-6 lg:mt-0 max-h-44">
               <h3 className="font-poppins font-bold ">Projected Launch Date</h3>
               <p className="font-poppins font-medium text-sm">
                 {projectCreatedDate.getDate()}
@@ -363,7 +368,7 @@ const SingleProject = () => {
                 <span> {projectCreatedDate.getFullYear()}</span>
               </p>
               <p className="my-2">
-                <span className="bg-blue2 p-2 rounded-md text-lg mx-1 font-poppins font-bold">
+                <span className="bg-slate-400 p-2 rounded-md text-lg mx-1 font-poppins font-bold">
                   {days}
                 </span>
                 <span className=" font-bold text-lg">Days</span>
@@ -380,25 +385,25 @@ const SingleProject = () => {
         </div>
         <div className="w-full md:w-9/12">
           <div className="flex flex-col md:flex-row">
-            <div className="w-full mt-5 md:mt-0 md:w-1/4 bg-blue-900 mr-5 rounded-lg h-24 text-center py-2">
+            <div className="w-full mt-5 md:mt-0 md:w-1/4 bg-slate-500 mr-5 rounded-lg h-24 text-center py-2">
               <p className="font-rubik text-white">Meterial Expenses</p>
               <p className="mt-2 font-poppins text-2xl font-bold text-white">
                 {project && numberWithCommas(totalExpenses)}
               </p>
             </div>
-            <div className="w-full mt-5 md:mt-0 md:w-1/4 bg-blue-900 mr-5 rounded-lg h-24 text-center py-2">
+            <div className="w-full mt-5 md:mt-0 md:w-1/4 bg-slate-500 mr-5 rounded-lg h-24 text-center py-2">
               <p className="font-rubik text-white">Payable BDT</p>
               <p className="mt-2 font-poppins text-2xl font-bold text-white">
                 {project && numberWithCommas(payable)}
               </p>
             </div>
-            <div className="w-full mt-5 md:mt-0 md:w-1/4 bg-blue-900 mr-5 rounded-lg h-24 text-center py-2">
+            <div className="w-full mt-5 md:mt-0 md:w-1/4 bg-slate-500 mr-5 rounded-lg h-24 text-center py-2">
               <p className="font-rubik text-white">Receivable BDT</p>
               <p className="mt-2 font-poppins text-2xl font-bold text-white">
                 {project && numberWithCommas(totalDeposit)}
               </p>
             </div>
-            <div className="w-full mt-5 md:mt-0 md:w-1/4 bg-blue-900 mr-5 rounded-lg h-24 text-center py-2">
+            <div className="w-full mt-5 md:mt-0 md:w-1/4 bg-slate-500 mr-5 rounded-lg h-24 text-center py-2">
               <p className="font-rubik text-white">Todays Credit</p>
               <p className="mt-2 font-poppins text-2xl font-bold text-white">
                 {project && numberWithCommas(todayDeposit)}
@@ -406,13 +411,13 @@ const SingleProject = () => {
             </div>
           </div>
           <div className="flex flex-col md:flex-row mt-4">
-            <div className="w-full md:w-1/4 mt-5 md:mt-0 bg-blue-900 mr-5 rounded-lg h-24 text-center py-2">
+            <div className="w-full md:w-1/4 mt-5 md:mt-0 bg-slate-500 mr-5 rounded-lg h-24 text-center py-2">
               <p className="font-rubik text-white">Laobur Expenses</p>
               <p className="mt-2 font-poppins text-2xl font-bold text-white">
                 {project && numberWithCommas(labourExpenses)}
               </p>
             </div>
-            <div className="w-full md:w-1/4 mt-5 md:mt-0 bg-blue-900 mr-5 rounded-lg h-24 text-center py-2">
+            <div className="w-full md:w-1/4 mt-5 md:mt-0 bg-slate-500 mr-5 rounded-lg h-24 text-center py-2">
               <p className="font-rubik text-white">Total Debit</p>
               <p className="mt-2 font-poppins text-2xl font-bold text-white">
                 {project && numberWithCommas(totalWitdraw)}
@@ -422,28 +427,27 @@ const SingleProject = () => {
         </div>
         <div className="w-full  mt-7">
           <div className="w-full pb-8   bg-slate-500 relative">
-            <div className="bg-slate-600 w-full py-1 flex items-center">
-              <h4 className=" ml-5 font-bold text-white text-xl w-full">
+            <div className=" bg-slate-900 w-full py-3 lg:py-2 flex items-center">
+              <h4 className=" ml-5 font-bold text-white text-sm md:text-xl w-full">
                 Meterial Expenses
               </h4>
               <button
-                className=" cursor-pointer w-36 mr-5 rounded-lg hover:bg-blue-500 bg-blue-400 text-white"
+                className=" cursor-pointer w-44 md:w-36 mr-5 rounded-lg hover:bg-blue-500 bg-blue-400 text-white"
                 onClick={() => setShowMExpenses(true)}
               >
                 Show Details
               </button>
             </div>
             <table className=" w-full   h-full    text-white">
-              <tr className="text-xs md:text-sm">
-                <th className="border-2 border-black bg-blue3">Serial No</th>
-                <th className="border-2 border-black bg-blue3 w-6/12">
+              <tr className="text-xs md:text-sm bg-red-500">
+                <th className="border-2 border-black  w-3/12 md:w-6/12 py-3  font-poppins">
                   Description
                 </th>
-                <th className="border-2 border-black bg-blue3">UOM</th>
-                <th className="border-2 border-black bg-blue3">Quantity</th>
-                <th className="border-2 border-black bg-blue3">Unit Price</th>
-                <th className="border-2 border-black bg-blue3">Amount</th>
-                <th className="border-2 border-black bg-blue3">Time</th>
+                <th className="border-2 border-black  py-3  font-poppins">UOM</th>
+                <th className="border-2 border-black  py-3  font-poppins">Quantity</th>
+                <th className="border-2 border-black  py-3  font-poppins">Unit Price</th>
+                <th className="border-2 border-black  py-3  font-poppins">Amount</th>
+                <th className="border-2 border-black  py-3  font-poppins">Time</th>
               </tr>
               {project &&
                 project.totalExpenses
@@ -451,24 +455,24 @@ const SingleProject = () => {
                   .map((val, ind) => {
                     return (
                       <tr key={ind} className="text-center text-xs md:text-sm">
-                        <td className="border-2 border-black">{ind + 1}</td>
-                        <td className="border-2 border-black">{val.title}</td>
-                        <td className="border-2 border-black">{val.uom}</td>
-                        <td className="border-2 border-black">{val.qty}</td>
-                        <td className="border-2 border-black">
+                      
+                        <td className="border-2 border-black py-2">{val.title}</td>
+                        <td className="border-2 border-black py-2">{val.uom}</td>
+                        <td className="border-2 border-black py-2">{val.qty}</td>
+                        <td className="border-2 border-black py-2">
                           {val.unitPrice}
                         </td>
-                        <td className="border-2 border-black">
+                        <td className="border-2 border-black py-2">
                           {numberWithCommas(val.amount)}
                         </td>
-                        <td className="border-2 border-black">
+                        <td className="border-2 border-black py-2">
                           {dateConverter(val.createdAt)}
                         </td>
                       </tr>
                     );
                   })}
             </table>
-            <div className="flex justify-center py-1  bg-blue-400 absolute bottom-0 w-full">
+            <div className="flex justify-center py-1  bg-slate-400 absolute bottom-0 w-full">
               <p
                 className="w-24 bg-white text-center rounded-sm cursor-pointer"
                 onClick={mPrevious}
@@ -487,26 +491,26 @@ const SingleProject = () => {
         </div>
         <div className="w-full  mt-7">
           <div className="w-full pb-8   bg-slate-500 relative">
-            <div className="bg-slate-600 w-full py-1 flex items-center">
-              <h4 className=" ml-5 font-bold text-white text-xl w-full">
+            <div className="bg-slate-950 w-full py-3 flex items-center md:py-2">
+              <h4 className=" ml-5 font-bold text-white text-sm md:text-xl w-full">
                 Labour Expenses
               </h4>
               <button
-                className=" cursor-pointer w-36 mr-5 rounded-lg hover:bg-blue-500 bg-blue-400 text-white"
+                className=" cursor-pointer w-44 md:w-36 mr-5 rounded-lg hover:bg-blue-500 bg-blue-400 text-white"
                 onClick={() => setShowLExpenses(true)}
               >
                 Show Details
               </button>
             </div>
             <table className=" w-full   h-full    text-white">
-              <tr>
-                <th className="border-2 border-black bg-blue3">Date</th>
-                <th className="border-2 border-black bg-blue3">Labour</th>
-                <th className="border-2 border-black bg-blue3">Per Rate</th>
-                <th className="border-2 border-black bg-blue3">Total Taka</th>
-                <th className="border-2 border-black bg-blue3">Payment</th>
-                <th className="border-2 border-black bg-blue3">Balance</th>
-                <th className="border-2 border-black bg-blue3">Remarks</th>
+              <tr className="bg-red-500">
+              
+                <th className="border-2 border-black  py-3">Labour</th>
+                <th className="border-2 border-black  py-3">Per Rate</th>
+                <th className="border-2 border-black  py-3">Total Taka</th>
+              
+                <th className="border-2 border-black  py-3">Balance</th>
+                <th className="border-2 border-black  py-3">Remarks</th>
               </tr>
               {project &&
                 project.labourExpenses
@@ -514,22 +518,20 @@ const SingleProject = () => {
                   .map((val, ind) => {
                     return (
                       <tr key={ind} className="text-center">
-                        <td className="border-2 border-black">
-                          {dateConverter(val.date)}
-                        </td>
-                        <td className="border-2 border-black">
+                        
+                        <td className="border-2 border-black py-1">
                           {numberWithCommas(val.title)}
                         </td>
-                        <td className="border-2 border-black">{val.rate}</td>
-                        <td className="border-2 border-black">{val.tAmount}</td>
-                        <td className="border-2 border-black">{val.payment}</td>
-                        <td className="border-2 border-black">{val.amount}</td>
-                        <td className="border-2 border-black">{val.remarks}</td>
+                        <td className="border-2 border-black py-1">{val.rate}</td>
+                        <td className="border-2 border-black py-1">{val.tAmount}</td>
+                        
+                        <td className="border-2 border-black py-1">{val.amount}</td>
+                        <td className="border-2 border-black py-1">{val.remarks}</td>
                       </tr>
                     );
                   })}
             </table>
-            <div className="flex justify-center py-1  bg-blue-400 absolute bottom-0 w-full">
+            <div className="flex justify-center py-1  bg-slate-400 absolute bottom-0 w-full">
               <p
                 className="w-24 bg-white text-center rounded-sm cursor-pointer"
                 onClick={mPrevious}
@@ -548,22 +550,17 @@ const SingleProject = () => {
         </div>
         <div className=" w-full flex flex-col md:flex-row mt-9">
           <div className="w-full md:w-6/12 bg-slate-500 relative">
-            <div className="bg-slate-600 py-1 flex items-center">
+            <div className="bg-slate-950 py-1 flex items-center">
               <h4 className="  text-center font-bold text-white text-xl w-full">
                 Client Credit
               </h4>
-              <p
-                className="text-2xl cursor-pointer text-white"
-                onClick={() => setShowDExpenses(!showDExpenses)}
-              >
-                <BiDotsVertical />
-              </p>
+             
             </div>
             <table className=" w-full   text-white mb-8">
-              <tr>
-                <th className="border-2 border-black bg-blue3">Description</th>
-                <th className="border-2 border-black bg-blue3">Amount</th>
-                <th className="border-2 border-black bg-blue3">Time</th>
+              <tr className="bg-red-500">
+                <th className="border-2 border-black py-3">Description</th>
+                <th className="border-2 border-black py-3">Amount</th>
+                <th className="border-2 border-black py-3">Time</th>
               </tr>
               {project &&
                 project.clientDeposit
@@ -571,18 +568,18 @@ const SingleProject = () => {
                   .map((val, ind) => {
                     return (
                       <tr key={ind} className="text-center">
-                        <td className="border-2 border-black">{val.title}</td>
-                        <td className="border-2 border-black">
+                        <td className="border-2 border-black py-1">{val.title}</td>
+                        <td className="border-2 border-black py-1">
                           {numberWithCommas(val.amount)}
                         </td>
-                        <td className="border-2 border-black">
+                        <td className="border-2 border-black py-1">
                           {dateConverter(val.createdAt)}
                         </td>
                       </tr>
                     );
                   })}
             </table>
-            <div className="flex justify-center py-1 bg-blue-400 absolute bottom-0 w-full">
+            <div className="flex justify-center py-1 bg-slate-400 absolute bottom-0 w-full">
               <p
                 className="w-24 bg-white text-center rounded-sm cursor-pointer"
                 onClick={dPrevious}
@@ -614,23 +611,18 @@ const SingleProject = () => {
               </div>
             )}
           </div>
-          <div className="w-full md:w-6/12 bg-slate-500 relative md:ml-1 mt-5 md:mt-0">
-            <div className="bg-slate-600 py-1 flex items-center">
-              <h4 className="  text-center font-bold text-white text-xl w-full">
+          <div className="w-full md:w-6/12 bg-slate-500 relative md:ml-1 mt-5 md:mt-0 mb-5">
+            <div className="bg-slate-950 py-1 flex items-center">
+              <h4 className="  text-center font-bold font text-white text-xl w-full">
                 Client Debit
               </h4>
-              <p
-                className="text-2xl cursor-pointer text-white"
-                onClick={() => setShowCExpenses(!showCExpenses)}
-              >
-                <BiDotsVertical />
-              </p>
+             
             </div>
             <table className=" w-full   text-white mb-8">
-              <tr>
-                <th className="border-2 border-black bg-blue3">Description</th>
-                <th className="border-2 border-black bg-blue3">Amount</th>
-                <th className="border-2 border-black bg-blue3">Time</th>
+              <tr className="bg-red-500">
+                <th className="border-2 border-black py-3">Description</th>
+                <th className="border-2 border-black py-3">Amount</th>
+                <th className="border-2 border-black py-3">Time</th>
               </tr>
               {project &&
                 project.clientWithdraw
@@ -638,18 +630,18 @@ const SingleProject = () => {
                   .map((val, ind) => {
                     return (
                       <tr key={ind} className="text-center">
-                        <td className="border-2 border-black">{val.title}</td>
-                        <td className="border-2 border-black">
+                        <td className="border-2 border-black py-1">{val.title}</td>
+                        <td className="border-2 border-black py-1">
                           {numberWithCommas(val.amount)}
                         </td>
-                        <td className="border-2 border-black">
+                        <td className="border-2 border-black py-1">
                           {dateConverter(val.createdAt)}
                         </td>
                       </tr>
                     );
                   })}
             </table>
-            <div className="flex justify-center py-1 bg-blue-400 absolute bottom-0 w-full">
+            <div className="flex justify-center py-1 bg-slate-400 absolute bottom-0 w-full">
               <p
                 className="w-24 bg-white text-center rounded-sm cursor-pointer"
                 onClick={cPrevious}
@@ -747,7 +739,7 @@ const SingleProject = () => {
       )}
       {showManagerAssign && (
         <div className="fixed z-50 w-full h-screen top-0 left-0 bg-box1 flex justify-center items-center">
-          <div className="w-10/12 md:w-5/12 bg-blue1 px-5 py-6 rounded-xl">
+          <div className="w-10/12 md:w-5/12 bg-slate-500 px-5 py-6 rounded-xl">
             <div className="flex justify-between">
               <p className="text-white font-medium">Assign Manager</p>
               <p
@@ -757,7 +749,7 @@ const SingleProject = () => {
                 Cancel
               </p>
             </div>
-            <div>
+            <div className="mt-5">
               <select
                 className="w-full mt-2 h-10 px-3"
                 onChange={(e) => setManagerId(e.target.value)}
@@ -784,8 +776,8 @@ const SingleProject = () => {
       )}
       {showClientAssign && (
         <div className="fixed z-50 w-full h-screen top-0 left-0 bg-box1 flex justify-center items-center">
-          <div className="w-10/12 md:w-5/12 bg-blue1 px-5 py-6 rounded-xl">
-            <div className="flex justify-between">
+          <div className="w-10/12 md:w-5/12 bg-slate-500 px-5 py-6 rounded-xl">
+            <div className="flex justify-between items-center">
               <p className="text-white font-medium">Assign Client</p>
               <p
                 className="text-white bg-black cursor-pointer py-1 px-4 rounded-lg"
@@ -794,7 +786,7 @@ const SingleProject = () => {
                 Cancel
               </p>
             </div>
-            <div>
+            <div className="mt-5">
               <select
                 className="w-full mt-2 h-10 px-3"
                 onChange={(e) => setClientId(e.target.value)}

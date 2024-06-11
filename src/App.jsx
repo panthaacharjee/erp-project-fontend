@@ -45,11 +45,15 @@ import UpdateAvatarAdmin from "./pages/AdminAccess/UpdateAvatarAdmin";
 import Attendence from "./pages/HrAccess/Attendence";
 import CreateAttendence from "./pages/HrAccess/CreateAttendence";
 import Footer from "./components/Footer";
+
+
+
 TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(ru);
 
 function App() {
   const dispatch = useDispatch();
+
 
   //Set Role Type for Forgot Authentication
   const [role, setRole] = useState("Admin");

@@ -44,7 +44,7 @@ const LabourGenerator = ({ setShowLExpenses, id }) => {
     // dispatch(getMeterialPdf());
   }, [success]);
   return (
-    <div className="text-white w-5/12 px-5 py-5 bg-blue-500">
+    <div className="text-white w-11/12 md:w-5/12 px-5 py-5 bg-slate-500">
       <div className="flex justify-between">
         <h2 className="text-xl font-bold mb-2">Labour Expenses List</h2>
         <p
@@ -56,11 +56,11 @@ const LabourGenerator = ({ setShowLExpenses, id }) => {
           Close
         </p>
       </div>
-      <div>
+      <div className="mt-5">
         <p>Select a time period (Selected - Now Date)</p>
         <input
           type="date"
-          className="w-full py-2 text-black rounded-md px-5"
+          className="w-full py-2 text-white rounded-md px-5 mt-3"
           onChange={(e) => {
             setPeriod(e.target.value);
             setTimeError();
@@ -93,7 +93,7 @@ const LabourGenerator = ({ setShowLExpenses, id }) => {
         <a
           href={filename2}
           target="_blank"
-          download="meterial_expenses.pdf"
+          download="labour_expenses.pdf"
           className="w-full block text-center bg-slate-300 text-black font-medium font-poppins text-sm py-2 mt-5"
         >
           Download

@@ -107,14 +107,14 @@ const AddEmployee = () => {
   return (
     <div className="flex justify-center pt-20 mb-5">
       <MetaData title={"Create Employee"} />
-      <div className=" bg-white shadow-btn rounded-xl">
+      <div className=" bg-white shadow-btn rounded-xl w-11/12 md:w-4/12">
         <div className="rounded-md  py-5 px-5">
           <div className="flex justify-center">
             <label htmlFor="file-upload" className="cursor-pointer">
               {avatar ? (
-                <img src={avatar} className="m-auto block  h-52 mb-3" />
+                <img src={avatar} className="m-auto block  h-44 w-44 rounded-full mb-3" />
               ) : (
-                <img src={Profile} className="m-auto block  h-52 mb-3" />
+                <img src={Profile} className="m-auto block  h-44 w-44 rounded-full mb-3" />
               )}
             </label>
           </div>

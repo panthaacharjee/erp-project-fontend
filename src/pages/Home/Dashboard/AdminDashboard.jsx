@@ -5,10 +5,13 @@ import Imag from "../../../assets/Avatar/Profile.png";
 import { Link } from "react-router-dom";
 import LineChart from "../../../components/LineChart";
 import {
+  getAllProject,
   getMonthlyRevenue,
   getRevenue,
+  getTopCustomer,
   getTotalDeposit,
   getTotalWithdraw,
+  getUnpaidCustomer,
 } from "../../../redux/actions/adminAction";
 
 const AdminDashboard = () => {
@@ -103,7 +106,10 @@ const AdminDashboard = () => {
     dispatch(getMonthlyRevenue());
     dispatch(getTotalDeposit());
     dispatch(getTotalWithdraw());
-  }, [revenue, monRevenue, dailyRevenue]);
+    dispatch(getTopCustomer())
+    dispatch(getAllProject())
+    dispatch(getUnpaidCustomer())
+  }, [monRevenue]);
   return (
     <>
       <MetaData title={"Admin Dashboard"} />
@@ -134,13 +140,13 @@ const AdminDashboard = () => {
               <div className="bg-blue1 shadow-box1 h-32 rounded-3xl  mt-5 md:mt-0 md:mr-5  w-full lg:w-1/2  px-5 py-5">
                 <p className="text-xl font-poppins text-white">Revenue</p>
                 <p className="text-3xl mt-2 font-medium">
-                  {revenue && numberWithCommas(revenue)}
+                  {revenue ? numberWithCommas(revenue):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
                 </p>
               </div>
               <div className="bg-blue1 shadow-box1 h-32 rounded-3xl mt-5 md:mt-0  w-full lg:w-1/2 px-5 py-5">
                 <p className="text-xl font-poppins text-white">Total Deposit</p>
                 <p className="text-3xl mt-2 font-medium">
-                  {totalDeposit && numberWithCommas(totalDeposit)}
+                  {totalDeposit ? numberWithCommas(totalDeposit):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
                 </p>
               </div>
             </div>
@@ -150,13 +156,13 @@ const AdminDashboard = () => {
                   Total Withdraw
                 </p>
                 <p className="text-3xl mt-2 font-medium">
-                  {totalWithdraw && numberWithCommas(totalWithdraw)}
+                  {totalWithdraw ? numberWithCommas(totalWithdraw):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
                 </p>
               </div>
               <div className=" bg-blue1 shadow-box1 h-32 rounded-3xl  mt-5 md:mt-0  w-full lg:w-1/2  px-5 py-5">
                 <p className="text-xl font-poppins text-white">Daily Revenue</p>
                 <p className="text-3xl mt-2 font-medium">
-                  {dailyRevenue && numberWithCommas(dailyRevenue)}
+                  {dailyRevenue ? numberWithCommas(dailyRevenue):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
                 </p>
               </div>
             </div>
@@ -178,13 +184,13 @@ const AdminDashboard = () => {
                   <div className="flex justify-between items-center">
                     <p className=" text-white">Chairman </p>
                     <p className="text-white">
-                      {chairmanDeposit && numberWithCommas(chairmanDeposit)}
+                      {chairmanDeposit ? numberWithCommas(chairmanDeposit) :<span >0</span>}
                     </p>
                   </div>
                   <div className="flex justify-between items-center">
                     <p className=" text-white">MD</p>
                     <p className="text-white">
-                      {mdDeposit && numberWithCommas(mdDeposit)}
+                      {mdDeposit ? numberWithCommas(mdDeposit):<span>0</span>}
                     </p>
                   </div>
                 </div>
@@ -195,13 +201,13 @@ const AdminDashboard = () => {
                   <div className="flex justify-between items-center">
                     <p className=" text-white">Chairman </p>
                     <p className="text-white">
-                      {chairmanWithdraw && numberWithCommas(chairmanWithdraw)}
+                      {chairmanWithdraw ? numberWithCommas(chairmanWithdraw):<span>0</span>}
                     </p>
                   </div>
                   <div className="flex justify-between items-center">
                     <p className=" text-white">MD</p>
                     <p className="text-white">
-                      {mdWithdraw && numberWithCommas(mdWithdraw)}
+                      {mdWithdraw ? numberWithCommas(mdWithdraw):<span>0</span>}
                     </p>
                   </div>
                 </div>
@@ -212,8 +218,8 @@ const AdminDashboard = () => {
 
         {/* ============================== Month Wise Revenue ==================== */}
         <div className="mt-4 md:mt-10 flex flex-col lg:flex-row items-center w-full">
-          <div className="w-full lg:w-8/12 mt-9 shadow-sm ">
-            <LineChart chartData={data} />
+          <div className="w-full lg:w-8/12 mt-9 shadow-sm bg-white rounded-lg p-5 ">
+            <LineChart chartData={data} style={{backgroundColor:"#fff"}} />
           </div>
           <div className="w-full  lg:w-4/12 pl-0 lg:pl-4 mt-12 lg:mt-0 pb-4 ">
             <div className=" bg-blue1  shadow-box1 rounded-xl relative">

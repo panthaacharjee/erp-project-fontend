@@ -18,19 +18,19 @@ const AllEmployee = () => {
     dispatch(getEmployee(keyword));
   }, [keyword]);
   return (
-    <div className="px-3 sm:px-12 md:px-12 pt-14 md:py-20">
+    <div className="px-3 sm:px-12 md:px-12 pt-14 md:py-20 pb-5">
       <MetaData title={"All Employee"} />
       <div className="mt-5 bg-blue2 rounded-lg px-5 py-2 text-white flex justify-between items-center relative">
-        <h3 className=" text-xl font-poppins font-bold">All Employee</h3>
-        <form onSubmit={handleClick} className="w-6/12 md:w-3/12">
+        <h3 className="text-sm lg:text-xl font-poppins font-bold">All Employee</h3>
+        <form onSubmit={handleClick} className="w-7/12 md:w-3/12">
           <input
             type="text"
-            placeholder="search a client"
-            className="w-full px-3 py-1 rounded-md text-black"
+            placeholder="employee name"
+            className="w-full px-3 py-1 rounded-md text-white"
             onChange={(e) => setKeyword(e.target.value)}
           />
         </form>
-        <p className="absolute right-6 text-black text-lg">
+        <p className="absolute right-6 text-white text-lg">
           <BiSearchAlt2 />
         </p>
       </div>
@@ -40,7 +40,7 @@ const AllEmployee = () => {
           Wait................
         </p>
       ) : (
-        <div className="flex flex-col md:flex-row  mt-10">
+        <div className="flex flex-col md:flex-row flex-wrap  mt-0 md:mt-8">
           {employee && employee.length <= 0 ? (
             <p className="mt-5">No Employee Found</p>
           ) : null}
@@ -50,7 +50,7 @@ const AllEmployee = () => {
                 <Link
                   to={`/employee/${val._id}`}
                   key={ind}
-                  className="flex w-full md:w-3/12 mt-5 md:mt-0"
+                  className="flex w-full md:w-3/12  mt-5 md:mt-2"
                 >
                   <div className="w-full mr-2 bg-blue3 border-2 border-sky-300 rounded-2xl">
                     <div>
