@@ -295,7 +295,7 @@ const ManagerDashboard = () => {
     <>
       <MetaData title={"Manager Dashboard"} />
       <div className="relative">{ploading && <FullLoading />}</div>
-      <div className="px-3 sm:px-12 md:px-12 pt-14 md:py-20">
+      <div className="px-3 sm:px-12 md:px-12 pt-14 md:py-20 pb-5">
         {/* ============== Welcome Section ==================*/}
 
         <div className="flex flex-col md:flex-row md:items-center">
@@ -329,7 +329,7 @@ const ManagerDashboard = () => {
             </p>
           </div>
           <div className="w-full lg:w-3/12 flex justify-center">
-            <div className="bg-blue3 w-11/12 px-5 py-5 rounded-lg text-center leading-8 mt-6 lg:mt-0 max-h-44">
+            <div className="bg-blue3 text-white w-11/12 px-5 py-5 rounded-lg text-center leading-8 mt-6 lg:mt-0 max-h-44">
               <h3 className="font-poppins font-bold ">Projected Launch Date</h3>
               <p className="font-poppins font-medium text-sm">
                 {projectCreatedDate.getDate()}
@@ -487,19 +487,15 @@ const ManagerDashboard = () => {
           </div>
         </div>
         <div className="w-full   mt-20 ">
-          <div className="bg-blue3 w-full p-5 rounded-xl ">
+          <div className="bg-blue3 text-white w-full p-5 rounded-xl ">
             <h4 className="font-medium text-lg">Meterial Cost</h4>
             <table className="mt-2 w-full leading-8  overflow-y-auto text-center">
               <tr>
-                <th className="border-2 border-black bg-blue2 text-center">
-                  Serial No.
-                </th>
+               
                 <th className="border-2 border-black bg-blue2 text-center">
                   Description
                 </th>
-                <th className="border-2 border-black bg-blue2 text-center">
-                  UOM
-                </th>
+                
                 <th className="border-2 border-black bg-blue2 text-center">
                   Quantity
                 </th>
@@ -509,24 +505,20 @@ const ManagerDashboard = () => {
                 <th className="border-2 border-black bg-blue2 text-center">
                   Amount
                 </th>
+          
                 <th className="border-2 border-black bg-blue2 text-center">
-                  Remarks
-                </th>
-                <th className="border-2 border-black bg-blue2 text-center">
-                  Action
+                  Delete
                 </th>
               </tr>
               {project &&
                 project.totalExpenses.map((val, ind) => {
                   return (
                     <tr key={ind} className="  mt-5 md:mt-0 ">
-                      <td className="border-2 border-black">{ind + 1}</td>
                       <td className="border-2 border-black">{val.title}</td>
-                      <td className="border-2 border-black">{val.uom}</td>
                       <td className="border-2 border-black">{val.qty}</td>
                       <td className="border-2 border-black">{val.unitPrice}</td>
                       <td className="border-2 border-black">{val.amount}</td>
-                      <td className="border-2 border-black">{val.remarks}</td>
+                      
                       <td className=" border-2 border-black ">
                         <AiOutlineMinusCircle
                           onClick={() => deleteExpensesFunc(val._id)}
@@ -547,13 +539,11 @@ const ManagerDashboard = () => {
           </div>
         </div>
         <div className="w-full   mt-20 ">
-          <div className="bg-blue3 w-full p-5 rounded-xl ">
+          <div className="bg-blue3 text-white w-full p-5 rounded-xl ">
             <h4 className="font-medium text-lg">Labour Cost</h4>
             <table className="mt-2 w-full leading-8  overflow-y-auto text-center">
               <tr>
-                <th className="border-2 border-black bg-blue2 text-center">
-                  Date
-                </th>
+               
                 <th className="border-2 border-black bg-blue2 text-center">
                   Labour
                 </th>
@@ -569,28 +559,22 @@ const ManagerDashboard = () => {
                 <th className="border-2 border-black bg-blue2 text-center">
                   Balance
                 </th>
+                
                 <th className="border-2 border-black bg-blue2 text-center">
-                  Remarks
-                </th>
-                <th className="border-2 border-black bg-blue2 text-center">
-                  Action
+                  Delete
                 </th>
               </tr>
               {project &&
                 project.labourExpenses.map((val, ind) => {
                   return (
                     <tr key={ind} className="  mt-5 md:mt-0 ">
-                      <td className="border-2 border-black">{`${new Date(
-                        val.date
-                      ).getDate()}/${
-                        new Date(val.date).getMonth() + 1
-                      }/${new Date(val.date).getFullYear()}`}</td>
+                     
                       <td className="border-2 border-black">{val.title}</td>
                       <td className="border-2 border-black">{val.rate}</td>
                       <td className="border-2 border-black">{val.tAmount}</td>
                       <td className="border-2 border-black">{val.payment}</td>
                       <td className="border-2 border-black">{val.amount}</td>
-                      <td className="border-2 border-black">{val.remarks}</td>
+               
                       <td className=" border-2 border-black ">
                         <AiOutlineMinusCircle
                           onClick={() => deleteLabourExpensesFunc(val._id)}
@@ -613,7 +597,7 @@ const ManagerDashboard = () => {
         {/* ============== Project Section (Client Deposit) ==================*/}
         <div className="flex flex-col md:flex-row ">
           <div className=" w-full md:w-6/12  mt-12">
-            <div className="bg-blue3 w-full p-5 rounded-xl ">
+            <div className="bg-blue3 text-white w-full p-5 rounded-xl ">
               <h4 className="font-medium text-lg">Project Credit</h4>
               <div className="mt-2 leading-8 h-60 overflow-y-auto">
                 {project &&
@@ -650,7 +634,7 @@ const ManagerDashboard = () => {
             </div>
           </div>
           <div className="w-full lg:w-6/12  mt-12 ml-2">
-            <div className="bg-blue3 w-full p-5 rounded-xl ">
+            <div className="bg-blue3 text-white w-full p-5 rounded-xl ">
               <h4 className="font-medium text-lg">Project Debit</h4>
               <div className="mt-2 leading-8 h-60 overflow-y-auto">
                 {project &&

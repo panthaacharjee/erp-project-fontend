@@ -214,8 +214,9 @@ const ClientDashboard = () => {
     dispatch(clearSuccess());
     if (error) {
       toast(error);
-      dispatch(clearError());
     }
+
+    dispatch(clearError());
 
     //Notification
     if (cnsuccess) {
@@ -266,7 +267,7 @@ const ClientDashboard = () => {
             </p>
           </div>
           <div className="w-full lg:w-3/12 flex justify-center">
-            <div className="bg-blue3 w-11/12 px-5 py-5 rounded-lg text-center leading-8 mt-6 lg:mt-0 max-h-44">
+            <div className="bg-blue3 w-full px-5 py-5 rounded-lg text-center leading-8 mt-6 lg:mt-0 max-h-44">
               <h3 className="font-poppins font-bold ">Projected Launch Date</h3>
               <p className="font-poppins font-medium text-sm">
                 {projectCreatedDate.getDate()}
@@ -322,11 +323,11 @@ const ClientDashboard = () => {
         </div>
         {/* ============== Project Section (Client All Deposit) ==================*/}
         <div className="mt-16 flex flex-col md:flex-row ">
-          <div className="w-full md:w-8/12">
+          <div className="w-full md:w-8/12 bg-white rounded-lg p-5">
             <BarChart chartData={data} />
           </div>
           <div className="w-full md:w-4/12 mt-5 md:mt-0 flex justify-center items-start">
-            <div className="bg-blue3 px-5 py-7 w-10/12 rounded-lg leading-8">
+            <div className="bg-blue3 px-5 py-7 w-full md:w-10/12 rounded-lg leading-8">
               <h4 className="text-white font-poppins font-medium mb-3">
                 Payment Ledger Summary
               </h4>
@@ -354,7 +355,7 @@ const ClientDashboard = () => {
             </h4>
             <div>
               <textarea
-                className="w-full h-44 rounded-lg px-2"
+                className="w-full h-44 rounded-lg px-2 text-white"
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>
               <button

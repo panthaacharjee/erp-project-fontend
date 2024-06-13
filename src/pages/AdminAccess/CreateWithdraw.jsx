@@ -7,6 +7,7 @@ import Loader from "../../components/Loading";
 import MetaData from "../../components/MetaData";
 import {
   adminDeposit,
+  adminWithdraw,
   clearError,
   clearSuccess,
 } from "../../redux/actions/adminAction";
@@ -32,7 +33,7 @@ const CreateWithdraw = () => {
         title: title,
         amount: parseInt(amount),
       };
-      dispatch(adminDeposit(userData));
+      dispatch(adminWithdraw(userData));
     }
   };
   useEffect(() => {

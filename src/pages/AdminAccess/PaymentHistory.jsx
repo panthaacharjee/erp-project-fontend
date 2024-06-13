@@ -61,7 +61,7 @@ const PaymentHistory = () => {
                   <th>SL</th>
                   <th>Title</th>
                   <th>Amount</th>
-                  <th>Action</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody className="w-full">
@@ -94,7 +94,7 @@ const PaymentHistory = () => {
                   <th>SL</th>
                   <th>Title</th>
                   <th>Amount</th>
-                  <th>Action</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody className="w-full">

@@ -102,6 +102,7 @@ const AdminDashboard = () => {
         },
       ],
     });
+    console.log(totalWithdraw)
     dispatch(getRevenue());
     dispatch(getMonthlyRevenue());
     dispatch(getTotalDeposit());
@@ -110,6 +111,7 @@ const AdminDashboard = () => {
     dispatch(getAllProject())
     dispatch(getUnpaidCustomer())
   }, [monRevenue]);
+  console.log()
   return (
     <>
       <MetaData title={"Admin Dashboard"} />
@@ -140,13 +142,13 @@ const AdminDashboard = () => {
               <div className="bg-blue1 shadow-box1 h-32 rounded-3xl  mt-5 md:mt-0 md:mr-5  w-full lg:w-1/2  px-5 py-5">
                 <p className="text-xl font-poppins text-white">Revenue</p>
                 <p className="text-3xl mt-2 font-medium">
-                  {revenue ? numberWithCommas(revenue):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
+                  {revenue && revenue !== null ? numberWithCommas(revenue):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
                 </p>
               </div>
               <div className="bg-blue1 shadow-box1 h-32 rounded-3xl mt-5 md:mt-0  w-full lg:w-1/2 px-5 py-5">
                 <p className="text-xl font-poppins text-white">Total Deposit</p>
                 <p className="text-3xl mt-2 font-medium">
-                  {totalDeposit ? numberWithCommas(totalDeposit):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
+                  {totalDeposit && totalDeposit !=null ? numberWithCommas(totalDeposit):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
                 </p>
               </div>
             </div>
@@ -156,13 +158,13 @@ const AdminDashboard = () => {
                   Total Withdraw
                 </p>
                 <p className="text-3xl mt-2 font-medium">
-                  {totalWithdraw ? numberWithCommas(totalWithdraw):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
+                  {totalWithdraw && totalWithdraw !== null ? numberWithCommas(totalWithdraw):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
                 </p>
               </div>
               <div className=" bg-blue1 shadow-box1 h-32 rounded-3xl  mt-5 md:mt-0  w-full lg:w-1/2  px-5 py-5">
                 <p className="text-xl font-poppins text-white">Daily Revenue</p>
                 <p className="text-3xl mt-2 font-medium">
-                  {dailyRevenue ? numberWithCommas(dailyRevenue):<span style={{fontSize:"22px"}}>Please refresh this page</span>}
+                  {dailyRevenue &&  numberWithCommas(dailyRevenue)}
                 </p>
               </div>
             </div>
@@ -184,13 +186,13 @@ const AdminDashboard = () => {
                   <div className="flex justify-between items-center">
                     <p className=" text-white">Chairman </p>
                     <p className="text-white">
-                      {chairmanDeposit ? numberWithCommas(chairmanDeposit) :<span >0</span>}
+                      {chairmanDeposit && chairmanDeposit !=null ? numberWithCommas(chairmanDeposit) :<span >0</span>}
                     </p>
                   </div>
                   <div className="flex justify-between items-center">
                     <p className=" text-white">MD</p>
                     <p className="text-white">
-                      {mdDeposit ? numberWithCommas(mdDeposit):<span>0</span>}
+                      {mdDeposit && mdDeposit !==null ? numberWithCommas(mdDeposit):<span>0</span>}
                     </p>
                   </div>
                 </div>
@@ -201,13 +203,13 @@ const AdminDashboard = () => {
                   <div className="flex justify-between items-center">
                     <p className=" text-white">Chairman </p>
                     <p className="text-white">
-                      {chairmanWithdraw ? numberWithCommas(chairmanWithdraw):<span>0</span>}
+                      {chairmanWithdraw && chairmanDeposit !=null ? numberWithCommas(chairmanWithdraw):<span>0</span>}
                     </p>
                   </div>
                   <div className="flex justify-between items-center">
                     <p className=" text-white">MD</p>
                     <p className="text-white">
-                      {mdWithdraw ? numberWithCommas(mdWithdraw):<span>0</span>}
+                      {mdWithdraw && mdWithdraw !=null ? numberWithCommas(mdWithdraw):<span>0</span>}
                     </p>
                   </div>
                 </div>

@@ -42,8 +42,8 @@ const Attendence = () => {
               Status
             </td>
           </tr>
-          {/* {result &&
-            result.data.map((val, ind) => {
+          {/* {result ?
+            result?.data.map((val, ind) => {
               return (
                 <tr className="">
                   <td className="py-2 border-2 border-cyan-900">{ind + 1}</td>
@@ -56,7 +56,7 @@ const Attendence = () => {
                   </td>
                 </tr>
               );
-            })} */}
+            }):<p>Select A Date</p>} */}
         </table>
       </div>
     </div>
